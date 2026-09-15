@@ -55,8 +55,20 @@ public class ChessGame {
         ChessBoard newGame = new ChessBoard();
         //WHILE LOOP TO KEEP GAME RUNNING UNTIL USER PROMPTS TO STOP
         while(true){
+          //VALIDATE PIECE TYPE BY NAME MATCH
             System.out.println("Please select a chess piece: \n PAWN \n ROOK \n KNIGHT \n BISHOP \n QUEEN \n KING");
-            String userPiece = userIn.nextLine();
+            String userPiece = "";
+            boolean validPiece = false;
+
+            while (!validPiece) {
+                userPiece = userIn.nextLine().trim();
+                try {
+                    PieceType.valueOf(userPiece.toUpperCase());
+                    validPiece = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid piece. Please enter PAWN, ROOK, KNIGHT, BISHOP, QUEEN, or KING.");
+                }
+            }
             System.out.println("Please select a color: \n WHITE \n BLACK");
 
             // only proceed if/until the user enters valid color
@@ -98,14 +110,20 @@ public class ChessGame {
                 }
             }
            
+            // Catch non ints w parse, catch outside bounds w isValidRow
             System.out.println("CURRENT ROW: \n \t 1 \n \t 2 \n \t 3 \n \t 4 \n \t 5 \n \t 6 \n \t 7 \n \t 8");
             int currRow = -1;
             boolean validRow = false;
+
             while(!validRow){
                 String rawRow = userIn.nextLine().trim();
                 try {
                     currRow = Integer.parseInt(rawRow);
-                    validRow = true;
+                    if(newGame.isValidRow(currRow)) {
+                        validRow = true;
+                    } else {
+                        System.out.println("Invalid row. Please enter a number from 1-8.");
+                    }
                 } catch(NumberFormatException e){
                     System.out.println("Invalid row. Please enter a number.");
                 }

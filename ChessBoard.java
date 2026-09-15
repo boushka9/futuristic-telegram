@@ -16,4 +16,9 @@ public class ChessBoard {
     public boolean isValidColumn(char column) {
         return column >= MIN_COLUMN && column <= MAX_COLUMN;
     }
+
+    // used w inputs that are not int/1-8
+    public boolean isValidRow(int row) {
+        return row >= MIN_ROW && row <= MAX_ROW;
+    }
 }
