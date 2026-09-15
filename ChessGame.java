@@ -8,11 +8,3 @@ public class ChessGame {
     }
     
 }
-
-/*
-Danny TODO: 
-
-- ChessBoard Class
-
-- Pawn Class
-*/

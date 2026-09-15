@@ -42,13 +42,7 @@ public class Pawn {
         return isForwardMove(targetColumn, targetRow);
     }
 
-    /**
-     * A pawn is the one piece whose rule depends on this.color, not just
-     * this.column/this.row - direction and starting row flip depending
-     * on which side it's on. No diagonal capture is modeled here, since
-     * the assignment assumes this is the only piece on the board, so
-     * there's nothing for it to capture.
-     */
+// pawn can only move 'forward' (relative to it's color), in it's own row
     private boolean isForwardMove(char targetColumn, int targetRow) {
         if (targetColumn != this.column) {
             return false;

@@ -7,15 +7,12 @@ public class Rook {
     private char column;
     private int row;
 
-    // Empty constructor. Public so ChessGame can call new Rook().
     // Never static - a constructor's whole job is building "this".
     public Rook() {
         this.pieceName = PieceType.ROOK;
     }
 
-    // Full constructor. pieceName is not a parameter on purpose: a Rook
-    // object can only ever be a ROOK, so it's set internally instead of
-    // trusting the caller to pass the right enum value.
+ // a rook is only ever a ROOK, don't trust users on input
     public Rook(String color, char column, int row) {
         this.pieceName = PieceType.ROOK;
         this.color = color;
